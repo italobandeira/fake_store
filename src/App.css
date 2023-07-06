@@ -1,11 +1,11 @@
-.card {
+#cursorCard {
   cursor: pointer;
 }
 
 .card-img-top {
-    width: auto;
-    height: 250px;
-    object-fit: contain;
+  width: auto;
+  height: 250px;
+  object-fit: contain;
 }
 
 .card-body {
@@ -31,3 +31,40 @@
   object-fit: contain;
 }
 
+.cart {
+  background-color: #fff;
+  padding: 4vh 5vh;
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+
+@media(max-width:767px) {
+  .cart {
+    padding: 4vh;
+    border-bottom-left-radius: unset;
+    border-top-right-radius: 1rem;
+  }
+}
+
+.summary {
+  background-color: #ddd;
+  padding: 4vh 5vh;
+  border-bottom-left-radius: 1rem;
+  border-top-left-radius: 1rem;
+}
+
+@media(max-width:767px) {
+  .summary {
+    padding: 4vh;
+    border-bottom-left-radius: unset;
+    border-top-right-radius: 1rem;
+  }
+}
+
+.summary .col-2 {
+  padding: 0;
+}
+
+.summary .col-10 {
+  padding: 0;
+}
