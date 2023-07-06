@@ -1,0 +1,15 @@
+.card-img-top {
+    width: auto;
+    height: 250px;
+    object-fit: contain;
+}
+
+.card-body {
+  width: auto;
+  height: 190px;
+}
+
+.sticky-top {
+  position: sticky;
+  top: 0;
+}
