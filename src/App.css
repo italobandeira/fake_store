@@ -1,3 +1,7 @@
+.card {
+  cursor: pointer;
+}
+
 .card-img-top {
     width: auto;
     height: 250px;
@@ -13,3 +17,17 @@
   position: sticky;
   top: 0;
 }
+
+#inputQuantity {
+  max-width: 3em;
+}
+
+.lead {
+  text-align: justify;
+}
+
+#imageSize {
+  height: 400px;
+  object-fit: contain;
+}
+
