@@ -16,24 +16,49 @@ function Products() {
     fetchProducts()
   }, [])
 
-  const filterProduct = (cat) => {
-    const updatedList = products.filter((x) => x.category === cat);
+  const filterProduct = (categories) => {
+    const updatedList = products.filter((cat) => cat.category === categories);
     setFilter(updatedList);
   }
 
+  const filterName = (name) => {
+    const updatedName = products.filter(product => {
+      if (name === '') {
+        return product;
+      } else if (product.title.toLowerCase().includes(name.toLowerCase())) {
+        return product;
+      }
+    })
+
+    setFilter(updatedName);
+  }
+
   return (
-    <div class="container">
+    <div className="container">
       <h1 className="text-center display-5 fw-bolder mt-3">Products</h1>
       <hr className="border border-dark"></hr>
-      <div className="buttons d-flex justify-content-center mb-5 pb-5 col-12">
-        <button className="btn btn-outline-dark me-2" onClick={() => setFilter(products)}>All</button>
-        <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("men's clothing")}>Men's Clothing</button>
-        <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("women's clothing")}> Women's Clothing </button>
-        <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("jewelery")}>Jewelery</button>
-        <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("electronics")}>Electronic</button>
+      <div className='row'>
+        <div class="dropdown justify-content-start mb-5 pb-5 col">
+          <button class="btn btn-outline-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Categories
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="btn dropdown-item" onClick={() => setFilter(products)}>All</a></li>
+            <li><hr class="dropdown-divider"/></li>
+            <li><a class="btn dropdown-item" onClick={() => filterProduct("men's clothing")}>Men's Clothing</a></li>
+            <li><a class="btn dropdown-item" onClick={() => filterProduct("women's clothing")}> Women's Clothing</a></li>
+            <li><a class="btn dropdown-item" onClick={() => filterProduct("jewelery")}>Jewelery</a></li>
+            <li><a class="btn dropdown-item" onClick={() => filterProduct("electronics")}>Electronic</a></li>
+          </ul>
+        </div>
+        <div className='col-12 col-md-6 col-lg-4 mb-3'>
+          <form className="d-flex" role="search">
+            <input className="form-control me-2" type="search" placeholder="Search" onChange={(event) => { filterName(event.target.value); }} aria-label="Search" />
+          </form>
+        </div>
       </div>
       <div className="row">
-        <div class="card-group">
+        <div className="card-group">
           {
             filter.map((product) => {
               const { id, title, price, category, image } = product

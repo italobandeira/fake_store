@@ -3,7 +3,7 @@ import Products from '../../components/Products/products'
 function Home() {
 
   return (
-    <div className='container border mt-5'>
+    <div className='container mt-5'>
       {
         <Products/>
       }
