@@ -12,7 +12,7 @@ function Products({ products = [] }) {
             products.map((product) => {
               const { id, title, price, category, image } = product
               return (
-                <Link to={`/products/${id}`} className="col-12 col-md-6 col-lg-3 mb-3">
+                <Link to={`/products/${id}`} className="col-12 col-md-6 col-lg-3 mb-3 text-decoration-none">
                   <div className="card m-1">
                     <img src={image} className="card-img-top" />
                     <div className="card-body bg-light mt-1">
