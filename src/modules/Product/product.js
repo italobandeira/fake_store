@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 
 function Product() {
   const { id } = useParams();
+  const navigate = useNavigate()
   const [product, setProduct] = useState({})
 
   useEffect(() => {
@@ -13,6 +14,27 @@ function Product() {
     }
     fetchProduct()
   }, [])
+
+  const handleCart = (product, redirect) => {
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const isProductExist = cart.find(item => item.id === product.id)
+    if (isProductExist) {
+      const updateCart = cart.map(item => {
+        return {
+          ...item,
+          quantity: item.quantity + 1
+        }
+      })
+      alert('Product added to cart!')
+      localStorage.setItem('cart', JSON.stringify(updateCart))
+    } else {
+      localStorage.setItem('cart', JSON.stringify([...cart, {...product, quantity: 1}]))
+    }
+
+    if (redirect) {
+      navigate('/cart')
+    }
+  }
 
   return (
     <section className="py-5">
@@ -27,11 +49,11 @@ function Product() {
             </div>
             <p className="lead">{product?.description}</p>
             <div className="d-flex text-center">
-              <button className="btn btn-outline-success flex-shrink-0 m-2" type="button">
+              <button className="btn btn-success flex-shrink-0 m-2" type="button" onClick={() => handleCart(product, true)}>
                 <i className="bi-cart-fill me-1"></i>
                 Buy
               </button>
-              <button className="btn btn-outline-dark flex-shrink-0 m-2" type="button">
+              <button className="btn btn-outline-dark flex-shrink-0 m-2" type="button" onClick={() => handleCart(product)}>
                 <i className="bi-cart-fill me-1"></i>
                 Add to cart
               </button>
