@@ -11,14 +11,14 @@ import Cart from './modules/Cart/cart'
 function App() {
   return (
     <div>
-      <Navbar/>
-      <Header/>
+      <Navbar />
+      <Header />
       <Routes>
-        <Route path='/' element={<Home/>}/>
-        <Route path='/products/:id' element={<Product/>}/>
-        <Route path='/cart' element={<Cart/>}/>
+        <Route path='/' element={<Home />} />
+        <Route path='/products/:id' element={<Product />} />
+        <Route path='/cart' element={<Cart />} />
       </Routes>
-      <Footer/>
+      <Footer />
     </div>
   );
 }

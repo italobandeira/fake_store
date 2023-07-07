@@ -34,7 +34,7 @@ function Cart() {
       if (item.id === id){
         return {
           ...item,
-          quantity: item.quantity - 1
+          quantity: item.quantity > 0 ? item.quantity - 1 : 0
         }
       }
         return item;
@@ -115,7 +115,7 @@ function Cart() {
           </form>
           <div className="row border-top border-white mt-5">
             <div className="col mt-2"><p><strong>TOTAL PRICE</strong></p></div>
-            <div className="col text-end mt-2">${(total + 5).toFixed(2)}</div>
+            <div className="col text-end mt-2">${total ? (total + 5).toFixed(2) : 0}</div>
           </div>
           <div className="d-grid gap-2 col-12 mx-auto mt-3">
             <button className="btn btn-dark" type="button">CHECKOUT</button>

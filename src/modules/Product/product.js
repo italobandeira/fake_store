@@ -25,12 +25,13 @@ function Product() {
           quantity: item.quantity + 1
         }
       })
-      alert('Product added to cart!')
+
       localStorage.setItem('cart', JSON.stringify(updateCart))
     } else {
       localStorage.setItem('cart', JSON.stringify([...cart, {...product, quantity: 1}]))
     }
 
+    alert('Product added to cart!')
     if (redirect) {
       navigate('/cart')
     }
