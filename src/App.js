@@ -1,8 +1,7 @@
 import './App.css'
 import React from 'react'
 import { Routes, Route } from 'react-router-dom'
-import Navbar from './components/navbar/navbar'
-import Header from './components/Header/header'
+import Navbar from './components/Navbar/navbar'
 import Footer from './components/Footer/footer'
 import Home from './modules/Home/home'
 import Product from './modules/Product/product'
@@ -12,7 +11,6 @@ function App() {
   return (
     <div>
       <Navbar />
-      <Header />
       <Routes>
         <Route path='/' element={<Home />} />
         <Route path='/products/:id' element={<Product />} />
